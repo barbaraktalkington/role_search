@@ -3,7 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # 1. Connect to Google Sheets
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("role-search-603a3ce54f29.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("role-search-dab9857c348f.json", scope)
 client = gspread.authorize(creds)
 
 # 2. Open your Google Sheet (must match the name you gave it in Drive)
