@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "role-search",
+  "private_key_id": "603a3ce54f297ebcf4a589b49dc2e01407e7b70b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC9xh1WiM+9L7kZ\natYLX8LXBBQkqu5yt5niVMavmUY178s/psFA2bMpGEzRK7lsx12fp8Qg7l8dsCvx\nOo7o/Mkuq4OyFLdk/uo4Hpyb8iKPaPTHG/GEJkfdHCjvwS4lPr92lR1LTvstP4M5\ns46YPTWxftMlYmPdyzAnPwiWriSPOzs3lfCiokmI1By/gfGwknNHJhT1vPPQyijY\nqwHfPZToKq9p5XXwYUdxsImxlLQftk5GJgN1/Oeeimzu7f7jGskpAO6CoIMUI3Oj\nznaS6cytmi4sX7ZO5ldUyoipqtzKlDpx6p42lGpD/pU3YY8k7m64KUxq9ZLI1juE\nsxwIhdPdAgMBAAECggEAB38lRwxsr8OhcK/aqJnd6PUJX6vHSM2tx6CuNZ8c2ddx\nGcCvty0Hvw/tmZYRgzV6omqJR1IV/KaqNw4SDwGiEpTQxRmSPMGLhUUuThnErudy\n7fpRsjT57JyRaxaK87U0xo2G706S17t/0VPMG6xQAUTqOI/ts9le5ln+2pxNUkFv\nlP9nFyl/O3oDx35ifXEdJXnJw9IUji6OM8lnckzarFqa/pQ00W/uYJZc8eiNgwqG\nj7nztIJePonjojHX32tjgGpxELF2Sf+rrWqvNCiWlShVaKwZ2gSLP3D6Je016pyw\njBHIjS77hv3NVUbUDWKWVv2DfGneyh54mZEiaBR4UQKBgQD9RdF+M4Fo/Yc+AS72\nV+C44oEFKeUqVV/X5E/y6FZCXm25Nfn8ccOTONLN6l2nXpdzekRaOoq3IJzHXJXi\nyr/38qXXnpXypjwM4bQZdpMI2aVgcNqOl5JKgVLRtafSdLUm+MfmAruiGtuEMYZ3\nnaNhKacX3G/QqI/pDHCGIGLHcQKBgQC/0UC53uYaAYxYHQNf1CwlFEBGrIEJo7c1\nkj60lOWxhxDBYYrxIxuqmH7JPZpeh5VW4t7XZ/xSCfmHVo4gTf1MUxhetS86ESwM\nzqRPZeEJjJZjcvjSPIi8m86j+Anx2s0J9G01LXDVvkLiC66k98RgcA8TJlJ73MtQ\nkAB36FSVLQKBgQDSfO3oVmHcoad+LnmbHdmTjhrv8auVDTMEN6kCFXlq2xORc3x5\nAwspFXaMz5RZ/tEblaes3S5fl2j0fsvKmfoE1NJjalbwPJt3kTSeXN9B4bABgIkD\nLJDV/riXtMLuszPCWcu4KtlJlcyOBqLcUlRv8a/+sqLy5MQFSONTdSLi4QKBgB86\nxFz+q1vkkKLv5lK9yoom5+gZwdB99SAltUvVSihDIzk41lQ4MRLvTQUaoH1veaLx\nwPI1HeGFejjMoMslp227waX5vbyoexGCu0GqBp91Yi7C0zv3WxPKEjSj94qG4wcR\n4o3b3hkOpvkCieaV6EUDOZEWlitQYVG2gD0FeG/pAoGBALQWtZ/ssLQ4ZQz1pwmr\nMGimCZ1ArgwXGtDngNHm986eWPni0Wzh9YrIB+Bya5icfxCuN2hfrQohyOrqKboO\n552LiXlV/LaDajoTd9picbvuY53mAlCQueul9vN14DtQ7F0n+He828gxnHIwMiib\nqaukwEfZ8cCik30IWLozrjrt\n-----END PRIVATE KEY-----\n",
+  "client_email": "role-search-assistant@role-search.iam.gserviceaccount.com",
+  "client_id": "104510266193161573403",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/role-search-assistant%40role-search.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
