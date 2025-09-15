@@ -1,3 +1,5 @@
+print("Job started")
+
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import requests # <-- use requests instead of feedparser
@@ -69,5 +71,21 @@ for job in all_jobs:
         sheet.append_row([job["title"], job["company"], job["location"], job["link"], date_added])
         new_count += 1
 
+
 print(f"✅ {len(all_jobs)} Jobs successfully written to Google Sheet!")
 print(f"✅ {new_count} new jobs successfully written to Google Sheet!")
+
+print(f"🔁 Job finished at {datetime.now()}")
+print(f"Checked {len(all_jobs)} jobs total, added {new_count} new ones.")
+
+# The following lines are comments to help you check your set up of scheduling job on your Mac using Terminal and launchd.
+# --------------------------------------------------------------
+
+## 1. Manually run the job and log at the same time:
+# /Users/rara/role_search/.venv/bin/python3 /Users/rara/role_search/main.py >> /Users/rara/role_search/job.log 2>> /Users/rara/role_search/job_error.log
+# >> appends terminal output to job.log
+# 2>> appends errors to job_error.log
+# This simulates what launchd does automatically.
+## 2. Check the log after running this:
+# cat /Users/rara/role_search/job.log
+# cat /Users/rara/role_search/job_error.log
