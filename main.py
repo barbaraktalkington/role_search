@@ -6,7 +6,17 @@ import requests
 import feedparser
 from datetime import datetime
 
-# 1. Connect tand Open your Google Sheet (must match the name you gave it in Drive)
+# --- NEW SAFE FETCH WRAPPER ---
+def safe_fetch(fetch_func, keyword):
+    """Run a fetcher safely. If it errors, return an empty list instead of crashing."""
+    try:
+        return fetch_func(keyword)
+    except Exception as e:
+        print(f"⚠️ Error in {fetch_func.__name__} with keyword '{keyword}': {e}")
+        return []
+
+
+# 1. Connect and Open your Google Sheet (must match the name you gave it in Drive)
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name("role-search-dab9857c348f.json", scope)
 client = gspread.authorize(creds)
@@ -122,20 +132,28 @@ def fetch_jobs_powertofly(keyword):
 
 # Remote.co
 def fetch_jobs_remoteco(keyword):
+    """Fetch jobs from Remote.co RSS feed."""
     url = f"https://remote.co/remote-jobs/feed/?s={keyword.replace(' ', '+')}"
     print(f"🔍 Fetching from Remote.co: {url}")
-    feed = feedparser.parse(url)
-    jobs = []
-    for entry in feed.entries:
-        jobs.append({
-            "title": entry.title,
-            "company": "Unknown",
-            "location": "Remote",
-            "link": entry.link,
-            "source": "Remote.co"
-        })
-    print(f"✅ Found {len(jobs)} jobs for '{keyword}' (Remote.co)")
-    return jobs
+    try:
+        resp = requests.get(url, timeout=10) # timeout after 10 seconds
+        resp.raise_for_status()  # Raise an error for bad status codes
+        feed = feedparser.parse(resp.text)
+        
+        jobs = []
+        for entry in feed.entries:
+            jobs.append({
+                "title": entry.title,
+                "company": "Unknown",
+                "location": "Remote",
+                "link": entry.link,
+                "source": "Remote.co"
+            })
+        print(f"✅ Found {len(jobs)} jobs for '{keyword}' (Remote.co)")
+        return jobs
+    except Exception as e:
+        print(f"⚠️ Error fetching Remote.co jobs: {e}")
+        return []
 
 # Jobspresso
 def fetch_jobs_jobspresso(keyword):
@@ -187,14 +205,14 @@ keywords = [
 # 4. Fetch jobs for all keywords
 all_jobs = []
 for kw in keywords:
-    all_jobs.extend(fetch_jobs(kw))               # Remotive
-    all_jobs.extend(fetch_jobs_remoteok(kw))      # RemoteOK
-    all_jobs.extend(fetch_jobs_workingnomads(kw)) # Working Nomads
-    all_jobs.extend(fetch_jobs_wwr(kw))           # We Work Remotely
-    all_jobs.extend(fetch_jobs_powertofly(kw))    # PowerToFly
-    all_jobs.extend(fetch_jobs_remoteco(kw))      # Remote.co
-    all_jobs.extend(fetch_jobs_jobspresso(kw))    # Jobspresso
-    all_jobs.extend(fetch_jobs_skipdrive(kw))     # SkipTheDrive
+    all_jobs.extend(safe_fetch(fetch_jobs,kw))               # Remotive
+    all_jobs.extend(safe_fetch(fetch_jobs_remoteok, kw))      # RemoteOK
+    all_jobs.extend(safe_fetch(fetch_jobs_workingnomads,kw)) # Working Nomads
+    all_jobs.extend(safe_fetch(fetch_jobs_wwr,kw))           # We Work Remotely
+    all_jobs.extend(safe_fetch(fetch_jobs_powertofly,kw))    # PowerToFly
+    all_jobs.extend(safe_fetch(fetch_jobs_remoteco,kw))      # Remote.co
+    all_jobs.extend(safe_fetch(fetch_jobs_jobspresso,kw))    # Jobspresso
+    all_jobs.extend(safe_fetch(fetch_jobs_skipdrive,kw))     # SkipTheDrive
 
 # 5. Ensure headers exist and add missing ones 
 required_headers = ["Title", "Company", "Location", "Link", "Date Added", "Source"]
